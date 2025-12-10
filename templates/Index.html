@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Advisor AI</title>
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .chat-box {
+            height: 400px;
+            overflow-y: scroll;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: #fafafa;
+            border-radius: 5px;
+        }
+
+        .user-msg {
+            background: #d1e7ff;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .bot-msg {
+            background: #e7ffd9;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>AI Financial Advisor</h2>
+
+        <!-- Chat Messages Section -->
+        <div class="chat-box">
+            {% for sender, message in chat %}
+                {% if sender == "You" %}
+                    <div class="user-msg">You: {{ message }}</div>
+                {% else %}
+                    <div class="bot-msg">Advisor: {{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <!-- Input Form -->
+        <form method="POST">
+            <input type="text" name="message" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
+
+    </div>
+
+</body>
+</html>
